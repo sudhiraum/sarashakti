@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sara Shakti Private Limited - Powering a Sustainable Future through solar, wind, green hydrogen, and smart grid technologies.">
+<title>Sara Shakti Private Limited — Powering a Sustainable Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #050f1f;
+    --deep: #071428;
+    --blue: #0a2540;
+    --accent: #00c2a8;
+    --green: #00e5a0;
+    --glow: #00ffc2;
+    --sky: #1a6fff;
+    --white: #f0f6ff;
+    --muted: #7a9abf;
+    --card: rgba(10, 30, 60, 0.7);
+    --border: rgba(0, 194, 168, 0.18);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 1.1rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s;
+    backdrop-filter: blur(0px);
+  }
+  nav.scrolled {
+    background: rgba(5, 15, 31, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 5%;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, var(--accent), var(--sky));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+  }
+  .nav-links a {
+    color: rgba(240,246,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--accent), var(--sky)) !important;
+    color: var(--navy) !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: opacity 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .nav-cta::after { display: none !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+
+  /* ===== HERO ===== */
+  #home {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,111,255,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(0,194,168,0.08) 0%, transparent 60%),
+                linear-gradient(180deg, #060d1a 0%, #050f1f 100%);
+    z-index: 0;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(0,194,168,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,194,168,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 600px; height: 600px; top: -200px; right: -100px; background: rgba(26,111,255,0.15); animation: float1 8s ease-in-out infinite; }
+  .orb-2 { width: 400px; height: 400px; bottom: -100px; left: -50px; background: rgba(0,194,168,0.10); animation: float2 10s ease-in-out infinite; }
+  @keyframes float1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-30px,30px);} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(20px,-20px);} }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1280px; margin: 0 auto;
+    padding: 0 5%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 4rem;
+    padding-top: 6rem;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,194,168,0.12); border: 1px solid rgba(0,194,168,0.3);
+    color: var(--accent); font-size: 0.78rem; font-weight: 500;
+    padding: 0.3rem 0.85rem; border-radius: 100px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:none;} }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .line-accent {
+    background: linear-gradient(90deg, var(--accent), var(--sky));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    color: var(--muted); font-size: 1.05rem; font-weight: 300;
+    max-width: 480px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    box-shadow: 0 0 30px rgba(0,194,168,0.25);
+    border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,194,168,0.4); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+    border: 1px solid rgba(240,246,255,0.2);
+    transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+    color: var(--white); line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .hero-visual {
+    position: relative; animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-card-main {
+    background: linear-gradient(135deg, rgba(10,37,64,0.9), rgba(5,15,31,0.9));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card-main::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .energy-viz {
+    width: 100%; height: 280px;
+    position: relative; overflow: hidden; border-radius: 12px;
+    background: rgba(5,15,31,0.8);
+  }
+  .energy-chart { width: 100%; height: 100%; }
+  .floating-badge {
+    position: absolute;
+    background: rgba(10,37,64,0.95);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(12px);
+    font-size: 0.8rem;
+  }
+  .fb-top { top: -20px; right: 20px; display: flex; align-items: center; gap: 0.5rem; }
+  .fb-bottom { bottom: -20px; left: 20px; display: flex; align-items: center; gap: 0.5rem; }
+  .fb-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .fb-info {}
+  .fb-val { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+  .fb-desc { font-size: 0.72rem; color: var(--muted); }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
+  .power-meter { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+  .meter-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.78rem; }
+  .meter-label { color: var(--muted); width: 70px; flex-shrink: 0; }
+  .meter-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .meter-fill { height: 100%; border-radius: 2px; animation: grow 1.5s ease both; }
+  .mf-solar { background: linear-gradient(90deg, #ffd700, #ff8c00); width: 82%; animation-delay: 0.5s; }
+  .mf-wind { background: linear-gradient(90deg, var(--sky), var(--accent)); width: 67%; animation-delay: 0.7s; }
+  .mf-hydro { background: linear-gradient(90deg, var(--accent), var(--green)); width: 45%; animation-delay: 0.9s; }
+  @keyframes grow { from{transform:scaleX(0);transform-origin:left;} to{transform:scaleX(1);} }
+  .meter-val { color: var(--white); font-weight: 500; width: 32px; text-align: right; font-size: 0.78rem; }
+  .live-indicator { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--green); }
+  .live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 6rem 5%; max-width: 1280px; margin: 0 auto; }
+  section.full-width { max-width: 100%; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 500; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: normal; color: var(--accent); }
+  .section-sub {
+    color: var(--muted); font-size: 1rem; font-weight: 300;
+    max-width: 520px; line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .divider { width: 100%; height: 1px; background: var(--border); margin: 0; }
+
+  /* ===== TICKER ===== */
+  .ticker-section {
+    background: rgba(0,194,168,0.06);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0; overflow: hidden;
+  }
+  .ticker-track {
+    display: flex; gap: 4rem;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.82rem; font-weight: 500; color: var(--muted);
+    flex-shrink: 0;
+  }
+  .ticker-item .ico { color: var(--accent); font-size: 1rem; }
+  @keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== ABOUT ===== */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-img-block {
+    background: linear-gradient(135deg, rgba(26,111,255,0.15), rgba(0,194,168,0.1));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .about-img-block::after {
+    content: '';
+    position: absolute; top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(0,194,168,0.05) 60deg, transparent 120deg);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  .earth-icon {
+    font-size: 8rem; text-align: center; display: block;
+    position: relative; z-index: 1;
+    animation: float1 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(0,194,168,0.3));
+  }
+  .mission-pillars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 1.5rem; position: relative; z-index: 1;
+  }
+  .pillar {
+    background: rgba(5,15,31,0.7);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem;
+    text-align: center;
+  }
+  .pillar-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .pillar-text { font-size: 0.78rem; color: var(--muted); font-weight: 400; }
+  .pillar-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+
+  .about-text {}
+  .value-list { list-style: none; margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+  .value-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .value-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(0,194,168,0.1); border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .value-content {}
+  .value-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .value-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* ===== SERVICES ===== */
+  .services-bg {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 50%, var(--navy) 100%);
+    border-radius: 0;
+    padding: 6rem 0;
+  }
+  .services-inner { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-accent, linear-gradient(90deg, var(--accent), var(--sky)));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover { transform: translateY(-6px); border-color: rgba(0,194,168,0.35); box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(0,194,168,0.08); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .sc-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+  }
+  .sc-solar { background: rgba(255,215,0,0.12); }
+  .sc-wind { background: rgba(26,111,255,0.15); }
+  .sc-grid { background: rgba(0,194,168,0.12); }
+  .sc-hydro { background: rgba(0,229,160,0.12); }
+  .sc-title {
+    font-family: var(--font-display); font-size: 1.05rem;
+    font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.01em;
+  }
+  .sc-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .sc-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sc-features li { font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+  .sc-features li::before { content: '▸'; color: var(--accent); font-size: 0.7rem; }
+  .sc-link { display: flex; align-items: center; gap: 0.4rem; color: var(--accent); font-size: 0.82rem; font-weight: 500; margin-top: 1.5rem; text-decoration: none; transition: gap 0.2s; }
+  .sc-link:hover { gap: 0.7rem; }
+
+  /* ===== PROJECTS ===== */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .project-thumb {
+    height: 180px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+  }
+  .pt-solar { background: linear-gradient(135deg, #1a1a0a, #2a2a00); }
+  .pt-wind { background: linear-gradient(135deg, #0a1020, #0a2040); }
+  .pt-hydro { background: linear-gradient(135deg, #001a10, #003020); }
+  .project-thumb-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .project-thumb-icon { position: relative; z-index: 1; filter: drop-shadow(0 0 20px rgba(0,194,168,0.4)); }
+  .project-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(0,194,168,0.15); border: 1px solid rgba(0,194,168,0.3);
+    color: var(--accent); font-size: 0.7rem; font-weight: 600;
+    padding: 0.25rem 0.6rem; border-radius: 100px;
+    letter-spacing: 0.05em; text-transform: uppercase; z-index: 2;
+  }
+  .project-body { padding: 1.5rem; }
+  .project-tag { font-size: 0.72rem; color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+  .project-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .project-desc { color: var(--muted); font-size: 0.82rem; line-height: 1.6; margin-bottom: 1.25rem; }
+  .project-metrics { display: flex; gap: 1rem; }
+  .metric { }
+  .metric-val { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--green); }
+  .metric-label { font-size: 0.7rem; color: var(--muted); }
+
+  /* ===== SUSTAINABILITY ===== */
+  .sustainability-wrap {
+    background: linear-gradient(135deg, rgba(0,194,168,0.06), rgba(26,111,255,0.06));
+    border: 1px solid var(--border); border-radius: 24px; padding: 4rem;
+  }
+  .sdg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+  .sdg-card {
+    background: rgba(5,15,31,0.6); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    text-align: center; transition: all 0.3s;
+  }
+  .sdg-card:hover { border-color: rgba(0,194,168,0.4); transform: translateY(-3px); }
+  .sdg-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .sdg-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+  .sdg-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+  .co2-banner {
+    background: linear-gradient(135deg, rgba(0,229,160,0.1), rgba(0,194,168,0.1));
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 16px; padding: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .co2-text h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .co2-text p { color: var(--muted); font-size: 0.88rem; }
+  .co2-bar-wrap { flex: 1; min-width: 200px; }
+  .co2-bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .co2-bar { height: 10px; background: rgba(255,255,255,0.06); border-radius: 5px; overflow: hidden; }
+  .co2-fill { height: 100%; width: 73%; border-radius: 5px; background: linear-gradient(90deg, var(--accent), var(--green)); animation: grow 2s ease both; }
+
+  /* ===== RESEARCH ===== */
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .research-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    display: flex; gap: 1.5rem;
+    transition: all 0.3s;
+  }
+  .research-card:hover { border-color: rgba(0,194,168,0.35); transform: translateX(4px); }
+  .research-card.featured { grid-column: span 2; flex-direction: row; align-items: center; }
+  .research-icon {
+    width: 60px; height: 60px; flex-shrink: 0;
+    background: rgba(0,194,168,0.1); border: 1px solid var(--border);
+    border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.7rem;
+  }
+  .research-body {}
+  .research-tag { font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.4rem; }
+  .research-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .research-desc { color: var(--muted); font-size: 0.83rem; line-height: 1.6; }
+
+  /* ===== NEWS ===== */
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .news-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .news-header {
+    padding: 1.5rem; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .news-cat { font-size: 0.72rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(0,194,168,0.1); padding: 0.2rem 0.6rem; border-radius: 100px; }
+  .news-date { font-size: 0.72rem; color: var(--muted); }
+  .news-body { padding: 1.5rem; }
+  .news-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.4; }
+  .news-excerpt { color: var(--muted); font-size: 0.82rem; line-height: 1.6; margin-bottom: 1.25rem; }
+  .news-link { color: var(--accent); font-size: 0.8rem; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+  .news-link:hover { gap: 0.7rem; }
+
+  /* ===== CAREERS ===== */
+  .careers-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .jobs-list { display: flex; flex-direction: column; gap: 1rem; }
+  .job-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; transition: all 0.3s;
+    cursor: pointer;
+  }
+  .job-card:hover { border-color: rgba(0,194,168,0.35); transform: translateX(4px); }
+  .job-info {}
+  .job-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .job-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .job-tag { font-size: 0.72rem; color: var(--muted); background: rgba(255,255,255,0.05); padding: 0.2rem 0.6rem; border-radius: 100px; }
+  .job-apply {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--accent); padding: 0.45rem 1rem;
+    border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .job-apply:hover { background: rgba(0,194,168,0.1); border-color: var(--accent); }
+  .culture-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .culture-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem;
+  }
+  .culture-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .culture-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.3rem; }
+  .culture-desc { color: var(--muted); font-size: 0.78rem; line-height: 1.6; }
+
+  /* ===== CONTACT ===== */
+  .contact-bg {
+    background: linear-gradient(180deg, var(--navy), var(--deep));
+    padding: 6rem 0;
+  }
+  .contact-inner { max-width: 1280px; margin: 0 auto; padding: 0 5%; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; }
+  .contact-info {}
+  .office-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; margin: 2rem 0; }
+  .office-item { display: flex; gap: 1rem; }
+  .office-icon { font-size: 1.2rem; margin-top: 0.1rem; }
+  .office-detail {}
+  .office-city { font-weight: 600; font-size: 0.9rem; }
+  .office-addr { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+  .social-row { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+  .social-btn {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .social-btn:hover { background: rgba(0,194,168,0.12); border-color: var(--accent); transform: translateY(-2px); }
+  .contact-form {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(5,15,31,0.8);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--blue); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 5% 2rem;
+    max-width: 100%;
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+  .footer-col h4 { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; margin-bottom: 1rem; color: var(--white); }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col ul a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--accent); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { color: var(--muted); font-size: 0.78rem; }
+  .footer-certifications { display: flex; gap: 0.75rem; }
+  .cert-badge { background: rgba(0,194,168,0.1); border: 1px solid var(--border); border-radius: 6px; padding: 0.25rem 0.7rem; font-size: 0.7rem; font-weight: 600; color: var(--accent); }
+
+  /* ===== INTERSECTION ANIMATIONS ===== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal-left.visible { opacity: 1; transform: none; }
+  .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal-right.visible { opacity: 1; transform: none; }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu {
+    position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+    background: rgba(5,15,31,0.98); backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border);
+    z-index: 2000; transition: right 0.35s ease;
+    padding: 5rem 2rem 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1500; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .overlay.show { opacity: 1; pointer-events: all; }
+  .close-menu { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .sdg-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .research-card.featured { grid-column: span 1; }
+    .news-grid { grid-template-columns: 1fr; }
+    .careers-wrap { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .sustainability-wrap { padding: 2rem; }
+    section { padding: 4rem 5%; }
+  }
+
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .sdg-grid { grid-template-columns: 1fr 1fr; }
+    .culture-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="#home" class="logo">
+    <span class="logo-icon">⚡</span>
+    Sara <span>Shakti</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Solutions</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#sustainability">Impact</a></li>
+    <li><a href="#research">Innovation</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">About Us</a>
+  <a href="#services" onclick="toggleMenu()">Solutions</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#sustainability" onclick="toggleMenu()">Impact</a>
+  <a href="#research" onclick="toggleMenu()">Innovation</a>
+  <a href="#news" onclick="toggleMenu()">News</a>
+  <a href="#careers" onclick="toggleMenu()">Careers</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="max-width:100%;padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="dot"></span> Clean Energy Leader 2025</div>
+      <h1 class="hero-title">
+        Powering a<br>
+        <span class="line-accent">Sustainable</span><br>
+        Future
+      </h1>
+      <p class="hero-sub">Sara Shakti Private Limited delivers cutting-edge renewable solutions — from solar farms and offshore wind to smart grids and green hydrogen — accelerating the world's transition to net zero.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Quote →</a>
+        <a href="#services" class="btn-secondary">▶ Explore Solutions</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">4.2<span>GW</span></div>
+          <div class="stat-label">Clean Energy Deployed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">47<span>+</span></div>
+          <div class="stat-label">Countries Reached</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2.1<span>M</span></div>
+          <div class="stat-label">Homes Powered</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div style="position:relative; padding: 24px 0;">
+        <div class="floating-badge fb-top">
+          <div class="fb-icon" style="background:rgba(255,215,0,0.15);">☀️</div>
+          <div class="fb-info">
+            <div class="fb-val">98.4% Uptime</div>
+            <div class="fb-desc">Solar Array Alpha</div>
+          </div>
+        </div>
+
+        <div class="hero-card-main">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+            <div>
+              <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Live Dashboard</div>
+              <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;">Energy Output Monitor</div>
+            </div>
+            <div class="live-indicator"><span class="live-dot"></span> LIVE</div>
+          </div>
+          <div class="energy-viz">
+            <svg class="energy-chart" viewBox="0 0 400 200" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="solarGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffd700" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="windGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a6fff" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#1a6fff" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="hydroGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00c2a8" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#00c2a8" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Grid lines -->
+              <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="150" x2="400" y2="150" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <!-- Solar area -->
+              <path d="M0 140 C50 120, 100 60, 150 45 S250 30, 300 50 S370 80, 400 70 L400 200 L0 200 Z" fill="url(#solarGrad)"/>
+              <path d="M0 140 C50 120, 100 60, 150 45 S250 30, 300 50 S370 80, 400 70" fill="none" stroke="#ffd700" stroke-width="2.5" opacity="0.8"/>
+              <!-- Wind area -->
+              <path d="M0 160 C50 150, 100 120, 150 100 S250 85, 300 95 S370 110, 400 100 L400 200 L0 200 Z" fill="url(#windGrad)"/>
+              <path d="M0 160 C50 150, 100 120, 150 100 S250 85, 300 95 S370 110, 400 100" fill="none" stroke="#1a6fff" stroke-width="2" opacity="0.7"/>
+              <!-- Hydro area -->
+              <path d="M0 170 C50 168, 100 155, 150 145 S250 135, 300 140 S370 145, 400 140 L400 200 L0 200 Z" fill="url(#hydroGrad)"/>
+              <path d="M0 170 C50 168, 100 155, 150 145 S250 135, 300 140 S370 145, 400 140" fill="none" stroke="#00c2a8" stroke-width="2" opacity="0.6"/>
+              <!-- Labels -->
+              <text x="10" y="180" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans">Jan</text>
+              <text x="80" y="180" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans">Mar</text>
+              <text x="155" y="180" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans">May</text>
+              <text x="235" y="180" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans">Jul</text>
+              <text x="315" y="180" fill="rgba(255,255,255,0.3)" font-size="9" font-family="DM Sans">Sep</text>
+            </svg>
+          </div>
+          <div class="card-footer">
+            <div class="power-meter">
+              <div class="meter-row">
+                <span class="meter-label">☀️ Solar</span>
+                <div class="meter-bar"><div class="meter-fill mf-solar"></div></div>
+                <span class="meter-val">82%</span>
+              </div>
+              <div class="meter-row">
+                <span class="meter-label">💨 Wind</span>
+                <div class="meter-bar"><div class="meter-fill mf-wind"></div></div>
+                <span class="meter-val">67%</span>
+              </div>
+              <div class="meter-row">
+                <span class="meter-label">⚡ H₂</span>
+                <div class="meter-bar"><div class="meter-fill mf-hydro"></div></div>
+                <span class="meter-val">45%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-badge fb-bottom">
+          <div class="fb-icon" style="background:rgba(0,194,168,0.15);">📉</div>
+          <div class="fb-info">
+            <div class="fb-val">−73% CO₂</div>
+            <div class="fb-desc">vs. Fossil Baseline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-section">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ico">☀️</span> Solar Energy</div>
+    <div class="ticker-item"><span class="ico">💨</span> Wind Power</div>
+    <div class="ticker-item"><span class="ico">⚡</span> Smart Grids</div>
+    <div class="ticker-item"><span class="ico">🌿</span> Green Hydrogen</div>
+    <div class="ticker-item"><span class="ico">🔋</span> Energy Storage</div>
+    <div class="ticker-item"><span class="ico">🏭</span> Carbon Neutral</div>
+    <div class="ticker-item"><span class="ico">🌍</span> ESG Committed</div>
+    <div class="ticker-item"><span class="ico">🤖</span> AI-Optimized</div>
+    <div class="ticker-item"><span class="ico">☀️</span> Solar Energy</div>
+    <div class="ticker-item"><span class="ico">💨</span> Wind Power</div>
+    <div class="ticker-item"><span class="ico">⚡</span> Smart Grids</div>
+    <div class="ticker-item"><span class="ico">🌿</span> Green Hydrogen</div>
+    <div class="ticker-item"><span class="ico">🔋</span> Energy Storage</div>
+    <div class="ticker-item"><span class="ico">🏭</span> Carbon Neutral</div>
+    <div class="ticker-item"><span class="ico">🌍</span> ESG Committed</div>
+    <div class="ticker-item"><span class="ico">🤖</span> AI-Optimized</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal-left">
+      <div class="about-img-block">
+        <span class="earth-icon">🌍</span>
+        <div class="mission-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🎯</div>
+            <div class="pillar-val">2030</div>
+            <div class="pillar-text">Net Zero Target</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-val">10 GW</div>
+            <div class="pillar-text">Capacity Goal</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🏆</div>
+            <div class="pillar-val">ISO 50001</div>
+            <div class="pillar-text">Certified</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-val">Paris</div>
+            <div class="pillar-text">Aligned</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text reveal-right">
+      <div class="section-tag">About Sara Shakti</div>
+      <h2 class="section-title">Accelerating the <em>Energy Transition</em></h2>
+      <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;margin-bottom:1.5rem;">
+        Founded in 2010, Sara Shakti Private Limited has grown into a global leader in renewable power solutions. We combine deep engineering expertise with forward-thinking technology to deliver clean energy infrastructure that stands the test of time.
+      </p>
+      <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;">
+        Our mission is simple: make clean, affordable, and reliable energy accessible to every community on earth. We align all operations with the Paris Agreement and UN Sustainable Development Goals.
+      </p>
+      <ul class="value-list">
+        <li class="value-item">
+          <div class="value-icon">🎯</div>
+          <div class="value-content">
+            <div class="value-title">Our Mission</div>
+            <div class="value-desc">To accelerate the global energy transition by delivering innovative, scalable, and affordable clean energy solutions.</div>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">🔭</div>
+          <div class="value-content">
+            <div class="value-title">Our Vision</div>
+            <div class="value-desc">A world powered entirely by renewable energy — where clean power drives prosperity, equity, and environmental resilience.</div>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">🌱</div>
+          <div class="value-content">
+            <div class="value-title">ESG Commitment</div>
+            <div class="value-desc">We report annually to GRI, SASB, and TCFD standards, maintaining full transparency on our environmental and social impact.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<div class="services-bg" id="services">
+  <div class="services-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-tag">Solutions Portfolio</div>
+        <h2 class="section-title">Clean Energy for Every <em>Scale</em></h2>
+        <p class="section-sub">From rooftop solar to utility-scale wind farms, we engineer solutions that match your energy ambitions.</p>
+      </div>
+      <a href="#contact" class="btn-secondary">All Solutions →</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal" style="--card-accent: linear-gradient(90deg, #ffd700, #ff8c00);">
+        <div class="sc-icon sc-solar">☀️</div>
+        <div class="sc-title">Solar Energy Solutions</div>
+        <div class="sc-desc">Utility-scale photovoltaic plants, commercial rooftop systems, and floating solar — designed for maximum yield and minimal land use.</div>
+        <ul class="sc-features">
+          <li>Bifacial panel technology</li>
+          <li>AI-driven yield optimization</li>
+          <li>O&M with predictive monitoring</li>
+          <li>Agrivoltaic integration</li>
+        </ul>
+        <a href="#contact" class="sc-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal" style="--card-accent: linear-gradient(90deg, #1a6fff, #00c2a8);">
+        <div class="sc-icon sc-wind">💨</div>
+        <div class="sc-title">Wind Energy Projects</div>
+        <div class="sc-desc">Onshore and offshore wind development, from site assessment and permitting through turbine installation and grid connection.</div>
+        <ul class="sc-features">
+          <li>Offshore floating platforms</li>
+          <li>Turbine siting & layout optimization</li>
+          <li>SCADA remote diagnostics</li>
+          <li>Decommissioning planning</li>
+        </ul>
+        <a href="#contact" class="sc-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal" style="--card-accent: linear-gradient(90deg, #00c2a8, #00e5a0);">
+        <div class="sc-icon sc-grid">⚡</div>
+        <div class="sc-title">Energy Storage & Smart Grids</div>
+        <div class="sc-desc">Grid-scale BESS, virtual power plants, and intelligent distribution networks that make renewable energy reliable and dispatchable.</div>
+        <ul class="sc-features">
+          <li>Lithium & flow battery systems</li>
+          <li>AI grid balancing algorithms</li>
+          <li>Demand response platforms</li>
+          <li>Microgrid islanding capability</li>
+        </ul>
+        <a href="#contact" class="sc-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal" style="--card-accent: linear-gradient(90deg, #00e5a0, #1a6fff);">
+        <div class="sc-icon sc-hydro">🌿</div>
+        <div class="sc-title">Green Hydrogen</div>
+        <div class="sc-desc">End-to-end green hydrogen production from renewable electrolysis, enabling decarbonization of hard-to-abate industrial sectors.</div>
+        <ul class="sc-features">
+          <li>PEM & alkaline electrolyzers</li>
+          <li>H₂ compression & storage</li>
+          <li>Fuel cell integration</li>
+          <li>Industrial offtake structuring</li>
+        </ul>
+        <a href="#contact" class="sc-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-tag">Case Studies</div>
+      <h2 class="section-title">Projects Powering <em>Change</em></h2>
+    </div>
+    <a href="#" class="btn-secondary">View All Projects →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-thumb pt-solar">
+        <div class="project-thumb-grid"></div>
+        <span class="project-thumb-icon">☀️</span>
+        <span class="project-badge">Operational</span>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Solar · Morocco</div>
+        <div class="project-name">Sahara Sun Complex — Phase II</div>
+        <div class="project-desc">900 MW utility-scale solar facility spanning 2,000 hectares in southern Morocco, delivering power to 600,000 homes.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">900 MW</div><div class="metric-label">Capacity</div></div>
+          <div class="metric"><div class="metric-val">−1.2M t</div><div class="metric-label">CO₂/year</div></div>
+          <div class="metric"><div class="metric-val">600K</div><div class="metric-label">Homes</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-thumb pt-wind">
+        <div class="project-thumb-grid"></div>
+        <span class="project-thumb-icon">💨</span>
+        <span class="project-badge">Operational</span>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Wind · North Sea</div>
+        <div class="project-name">Horizon Offshore Wind Farm</div>
+        <div class="project-desc">350-turbine offshore wind cluster generating 2.1 GW for the UK grid, powering 1.5 million households around the clock.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">2.1 GW</div><div class="metric-label">Capacity</div></div>
+          <div class="metric"><div class="metric-val">−3.4M t</div><div class="metric-label">CO₂/year</div></div>
+          <div class="metric"><div class="metric-val">1.5M</div><div class="metric-label">Homes</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-thumb pt-hydro">
+        <div class="project-thumb-grid"></div>
+        <span class="project-thumb-icon">⚡</span>
+        <span class="project-badge">In Development</span>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Hydrogen · Germany</div>
+        <div class="project-name">Rhine Valley Green H₂ Hub</div>
+        <div class="project-desc">Industrial-scale green hydrogen production facility using 500 MW of dedicated wind and solar, supplying steel and chemical industries.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">120K t</div><div class="metric-label">H₂/year</div></div>
+          <div class="metric"><div class="metric-val">−1.8M t</div><div class="metric-label">CO₂/year</div></div>
+          <div class="metric"><div class="metric-val">2027</div><div class="metric-label">Online</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability">
+  <div class="reveal">
+    <div class="section-tag">ESG & Impact</div>
+    <h2 class="section-title">Our Commitment to a <em>Greener World</em></h2>
+    <p class="section-sub">Every project we deliver advances the UN Sustainable Development Goals and pushes the global economy closer to net zero.</p>
+  </div>
+  <div class="sustainability-wrap reveal">
+    <div class="sdg-grid">
+      <div class="sdg-card">
+        <div class="sdg-icon">⚡</div>
+        <div class="sdg-num">4.2 GW</div>
+        <div class="sdg-label">Clean Energy Installed</div>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-icon">🌱</div>
+        <div class="sdg-num">8.4M t</div>
+        <div class="sdg-label">CO₂ Avoided Annually</div>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-icon">💧</div>
+        <div class="sdg-num">12B ℓ</div>
+        <div class="sdg-label">Water Saved vs. Thermal</div>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-icon">👥</div>
+        <div class="sdg-num">28,000</div>
+        <div class="sdg-label">Green Jobs Created</div>
+      </div>
+    </div>
+    <div class="co2-banner">
+      <div class="co2-text">
+        <h3>🌿 On Track for Net Zero by 2035</h3>
+        <p>73% of our operational portfolio is fully carbon neutral. Remaining 27% transitions by 2028.</p>
+      </div>
+      <div class="co2-bar-wrap">
+        <div class="co2-bar-label"><span>Carbon Neutrality Progress</span><span>73%</span></div>
+        <div class="co2-bar"><div class="co2-fill"></div></div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:0.4rem;">SDG 7 · SDG 13 · SDG 17 aligned</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH & INNOVATION -->
+<section id="research">
+  <div class="reveal">
+    <div class="section-tag">R&D & Innovation</div>
+    <h2 class="section-title">Building the <em>Future</em> of Energy</h2>
+    <p class="section-sub">Our global research labs explore next-generation technologies that will define how the world generates and consumes energy.</p>
+  </div>
+  <div class="research-grid">
+    <div class="research-card featured reveal">
+      <div class="research-icon" style="width:80px;height:80px;font-size:2.2rem;">🤖</div>
+      <div class="research-body">
+        <div class="research-tag">Featured Initiative</div>
+        <div class="research-title" style="font-size:1.2rem;">AI-Powered Grid Intelligence Platform</div>
+        <div class="research-desc">Our proprietary GridMind™ AI platform uses deep learning and real-time sensor data to predict demand patterns, pre-position energy reserves, and autonomously balance loads across continent-scale renewable networks — reducing curtailment by 34% and grid instability events by 61%.</div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <div class="research-icon">🏙️</div>
+      <div class="research-body">
+        <div class="research-tag">Smart Cities</div>
+        <div class="research-title">Urban Energy Ecosystems</div>
+        <div class="research-desc">Integrating EV charging networks, building energy management, and distributed solar into seamless urban microgrids.</div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <div class="research-icon">🔬</div>
+      <div class="research-body">
+        <div class="research-tag">Materials Science</div>
+        <div class="research-title">Perovskite Solar Cells</div>
+        <div class="research-desc">Partnering with MIT and EPFL to commercialize 32%+ efficiency perovskite-silicon tandem cells by 2026.</div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <div class="research-icon">🛰️</div>
+      <div class="research-body">
+        <div class="research-tag">Digital Twin</div>
+        <div class="research-title">Virtual Asset Monitoring</div>
+        <div class="research-desc">Satellite + IoT digital twins of every asset enable predictive maintenance, cutting downtime by 40% across our portfolio.</div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <div class="research-icon">🌊</div>
+      <div class="research-body">
+        <div class="research-tag">Ocean Energy</div>
+        <div class="research-title">Tidal & Wave Power</div>
+        <div class="research-desc">Pilot projects in Scotland and Portugal harnessing tidal stream and wave motion for predictable baseload renewable power.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-tag">Insights & News</div>
+      <h2 class="section-title">Latest from <em>Sara Shakti</em></h2>
+    </div>
+    <a href="#" class="btn-secondary">All Articles →</a>
+  </div>
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <div class="news-header">
+        <span class="news-cat">Announcement</span>
+        <span class="news-date">Feb 12, 2025</span>
+      </div>
+      <div class="news-body">
+        <div class="news-title">Sara Shakti Closes €2.4B Green Bond to Fund North Sea Expansion</div>
+        <div class="news-excerpt">The oversubscribed issuance will finance 1,400 MW of additional offshore wind capacity, marking the largest single green bond in company history.</div>
+        <a href="#" class="news-link">Read more →</a>
+      </div>
+    </div>
+    <div class="news-card reveal">
+      <div class="news-header">
+        <span class="news-cat">Policy</span>
+        <span class="news-date">Jan 28, 2025</span>
+      </div>
+      <div class="news-body">
+        <div class="news-title">How the EU's New Grid Code Will Accelerate the Hydrogen Economy</div>
+        <div class="news-excerpt">Our policy team breaks down the revised network rules and how they create new routes to market for grid-connected green hydrogen producers.</div>
+        <a href="#" class="news-link">Read more →</a>
+      </div>
+    </div>
+    <div class="news-card reveal">
+      <div class="news-header">
+        <span class="news-cat">Technology</span>
+        <span class="news-date">Jan 14, 2025</span>
+      </div>
+      <div class="news-body">
+        <div class="news-title">GridMind™ Wins 2025 Global CleanTech Innovation Award</div>
+        <div class="news-excerpt">Our AI grid balancing platform was recognized for cutting renewable curtailment by 34% across deployments in five countries during 2024.</div>
+        <a href="#" class="news-link">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers">
+  <div class="section-tag reveal">Join Our Team</div>
+  <h2 class="section-title reveal">Build the Future, <em>With Us</em></h2>
+  <p class="section-sub reveal">We're a team of engineers, scientists, financiers, and activists united by one goal: making clean energy the foundation of modern civilization.</p>
+
+  <div class="careers-wrap">
+    <div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:1.25rem;color:var(--accent);">Open Positions</div>
+      <div class="jobs-list">
+        <div class="job-card reveal">
+          <div class="job-info">
+            <div class="job-title">Senior Grid Systems Engineer</div>
+            <div class="job-meta">
+              <span class="job-tag">⚡ Engineering</span>
+              <span class="job-tag">📍 Amsterdam</span>
+              <span class="job-tag">🕐 Full-time</span>
+            </div>
+          </div>
+          <button class="job-apply">Apply →</button>
+        </div>
+        <div class="job-card reveal">
+          <div class="job-info">
+            <div class="job-title">AI / ML Engineer — Energy Forecasting</div>
+            <div class="job-meta">
+              <span class="job-tag">🤖 Data Science</span>
+              <span class="job-tag">📍 Remote</span>
+              <span class="job-tag">🕐 Full-time</span>
+            </div>
+          </div>
+          <button class="job-apply">Apply →</button>
+        </div>
+        <div class="job-card reveal">
+          <div class="job-info">
+            <div class="job-title">Offshore Wind Project Developer</div>
+            <div class="job-meta">
+              <span class="job-tag">💨 Development</span>
+              <span class="job-tag">📍 London</span>
+              <span class="job-tag">🕐 Full-time</span>
+            </div>
+          </div>
+          <button class="job-apply">Apply →</button>
+        </div>
+        <div class="job-card reveal">
+          <div class="job-info">
+            <div class="job-title">ESG & Sustainability Analyst</div>
+            <div class="job-meta">
+              <span class="job-tag">🌱 Sustainability</span>
+              <span class="job-tag">📍 Berlin</span>
+              <span class="job-tag">🕐 Full-time</span>
+            </div>
+          </div>
+          <button class="job-apply">Apply →</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:1.25rem;color:var(--accent);">Our Culture</div>
+      <div class="culture-grid">
+        <div class="culture-item reveal">
+          <div class="culture-icon">🌍</div>
+          <div class="culture-title">Global & Diverse</div>
+          <div class="culture-desc">57 nationalities across 12 offices, with equal pay commitment and 43% women in leadership.</div>
+        </div>
+        <div class="culture-item reveal">
+          <div class="culture-icon">🎓</div>
+          <div class="culture-title">Continuous Learning</div>
+          <div class="culture-desc">€3,000/year learning budget, internal university, and leadership development tracks.</div>
+        </div>
+        <div class="culture-item reveal">
+          <div class="culture-icon">🏡</div>
+          <div class="culture-title">Flexible Work</div>
+          <div class="culture-desc">Hybrid-first model with core hours, generous parental leave, and a 4-day week pilot.</div>
+        </div>
+        <div class="culture-item reveal">
+          <div class="culture-icon">🚀</div>
+          <div class="culture-title">Mission-Driven</div>
+          <div class="culture-desc">Every role contributes to our Net Zero mission. We measure impact, not just output.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-bg" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title" style="margin-bottom:3rem;">Start Your Clean Energy <em>Journey</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:2rem;">Whether you're exploring a utility-scale project, need an energy audit, or want to discuss investment opportunities — our team is ready to help.</p>
+        <ul class="office-list">
+          <li class="office-item">
+            <span class="office-icon">📍</span>
+            <div class="office-detail">
+              <div class="office-city">Amsterdam HQ</div>
+              <div class="office-addr">Herengracht 420, 1017 BZ<br>Amsterdam, Netherlands</div>
+            </div>
+          </li>
+          <li class="office-item">
+            <span class="office-icon">📍</span>
+            <div class="office-detail">
+              <div class="office-city">London Office</div>
+              <div class="office-addr">100 Bishopsgate, EC2M 4NN<br>London, United Kingdom</div>
+            </div>
+          </li>
+          <li class="office-item">
+            <span class="office-icon">📍</span>
+            <div class="office-detail">
+              <div class="office-city">Singapore APAC</div>
+              <div class="office-addr">One Raffles Quay, #30-00<br>Singapore 048583</div>
+            </div>
+          </li>
+        </ul>
+        <div style="color:var(--muted);font-size:0.82rem;margin-bottom:0.5rem;">📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771f121b1b1837121418191801165912191205100e">[email&#160;protected]</a> &nbsp;·&nbsp; 📞 +31 20 700 1234</div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">Send Us a Message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone (optional)</label>
+            <input type="tel" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Inquiry Type</label>
+          <select>
+            <option>Select inquiry type</option>
+            <option>Get a Project Quote</option>
+            <option>Solar Energy Solutions</option>
+            <option>Wind Energy Projects</option>
+            <option>Energy Storage & Grids</option>
+            <option>Green Hydrogen</option>
+            <option>Investment & Partnerships</option>
+            <option>Careers</option>
+            <option>Press & Media</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your energy project or question..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="handleFormSubmit(event)">
+          Send Message →
+        </button>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;text-align:center;">We typically respond within 1 business day. Your data is protected under our Privacy Policy.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo" style="margin-bottom:0.5rem;display:inline-flex;">
+          <span class="logo-icon">⚡</span>
+          Sara <span>Shakti</span>
+        </a>
+        <p>Leading the global energy transition through technology, innovation, and a deep commitment to a sustainable future for all.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#sustainability">Sustainability</a></li>
+          <li><a href="#research">Innovation</a></li>
+          <li><a href="#news">News & Blog</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#services">Solar Energy</a></li>
+          <li><a href="#services">Wind Power</a></li>
+          <li><a href="#services">Smart Grids</a></li>
+          <li><a href="#services">Green Hydrogen</a></li>
+          <li><a href="#services">Energy Storage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Settings</a></li>
+          <li><a href="#">ESG Report 2024</a></li>
+          <li><a href="#">Investor Relations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Sara Shakti Private Limited. All rights reserved. Committed to the Paris Agreement and UN SDGs.</p>
+      <div class="footer-certifications">
+        <span class="cert-badge">ISO 50001</span>
+        <span class="cert-badge">LEED Gold</span>
+        <span class="cert-badge">Net Zero</span>
+        <span class="cert-badge">B Corp</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  }
+
+  // Intersection Observer for reveal animations
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger delay based on siblings
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right'));
+        const idx = siblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = `${idx * 0.08}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #00e5a0, #00c2a8)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Animated counter for hero stats
+  function animateCount(el, target, suffix='', duration=1800) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = Number.isInteger(target) ? Math.round(start) + suffix : start.toFixed(1) + suffix;
+    }, 16);
+  }
+
+  // Trigger counters when hero visible
+  const heroObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      heroObserver.disconnect();
+    
